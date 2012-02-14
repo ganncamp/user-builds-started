@@ -1,0 +1,8 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+	<br/>
+	<j:whitespace>
+	<img src="${Hudson.RESOURCE_PATH}/images/16x16/${it.getIconFileName()}"/>
+	<b><a href="${it.rootPath}/${it.getUser().getUrl()}/${it.getUrlName()}">${it.getDisplayName()}</a></b>
+	</j:whitespace>
+</j:jelly>

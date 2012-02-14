@@ -1,0 +1,31 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+	<l:layout title="${it.getUser().getFullName()}'s ${it.getDisplayName()}" >
+		<st:include  it="${it.user}"  page="sidepanel.jelly" />
+
+		<l:main-panel>
+			<h2>${it.getDisplayName()}</h2>
+			<table id="promotions" width="500">
+				<j:set var="baseUrl" value="${Hudson.RESOURCE_PATH}"/>
+				<j:set var="map" value="${it.getRuns()}"/>
+				<j:forEach var="entry" items="${map.entrySet()}">
+					<j:set var="job" value="${entry.getKey()}"/>
+					<j:set var="runs" value="${entry.getValue()}"/>
+
+					<a href="${baseUrl}/${job.getUrl()}">${job.getName()}</a>
+					<ul>
+						<j:forEach var="runNum" items="${runs}">
+							<j:set var="run" value="${job.getBuildByNumber(runNum)}"/>
+							<li style="list-style-image:url('${Hudson.RESOURCE_PATH}/images/16x16/${run.getBuildStatusUrl()}')">
+								<a href="${baseUrl}/${run.getUrl()}">#${runNum}</a>
+								<j:forEach var="param" items="${it.getParameters(run)}">
+									<j:whitespace>${param}, </j:whitespace>
+								</j:forEach>
+							</li>
+						</j:forEach>
+					</ul>
+				</j:forEach>
+			</table>
+		</l:main-panel>
+	</l:layout>
+</j:jelly>

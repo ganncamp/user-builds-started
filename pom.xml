@@ -13,6 +13,18 @@
   <packaging>hpi</packaging>
   <name>UserBuildsStartedAction</name>
 
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <developers>
+      <developer><name>G. Ann Campbell</name></developer>
+  </developers>
+
   <!-- get every artifact through maven.glassfish.org, which proxies all the artifacts that we need -->
   <repositories>
     <repository>
